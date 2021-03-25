@@ -34,6 +34,7 @@ func main() {
 	if len(files) == 0 {
 		curDir, err := os.Getwd()
 		if err != nil {
+			fmt.Printf("aaa")
 			log.Fatalln(err)
 		}
 		files = append(files, curDir)
@@ -64,6 +65,7 @@ func main() {
 
 		err := w.Ignore(trimmed)
 		if err != nil {
+			fmt.Printf("bbb")
 			log.Fatalln(err)
 		}
 	}
@@ -93,6 +95,7 @@ func main() {
 							log.Println(err)
 							continue
 						}
+						fmt.Printf("ccc")
 						log.Fatalln(err)
 					}
 				}
@@ -101,6 +104,7 @@ func main() {
 					fmt.Println(err)
 					continue
 				}
+				fmt.Printf("ddd")
 				log.Fatalln(err)
 			case <-w.Closed:
 				return
@@ -112,10 +116,12 @@ func main() {
 	for _, file := range files {
 		if *recursive {
 			if err := w.AddRecursive(file); err != nil {
+				fmt.Printf("eee")
 				log.Fatalln(err)
 			}
 		} else {
 			if err := w.Add(file); err != nil {
+				fmt.Printf("ffff")
 				log.Fatalln(err)
 			}
 		}
@@ -134,6 +140,7 @@ func main() {
 	// Parse the interval string into a time.Duration.
 	parsedInterval, err := time.ParseDuration(*interval)
 	if err != nil {
+		fmt.Printf("gggg")
 		log.Fatalln(err)
 	}
 
@@ -161,6 +168,7 @@ func main() {
 					log.Println(err)
 					return
 				}
+				fmt.Printf("hhhh")
 				log.Fatalln(err)
 			}
 		}
@@ -168,6 +176,7 @@ func main() {
 
 	// Start the watching process.
 	if err := w.Start(parsedInterval); err != nil {
+		fmt.Printf("iiiii")
 		log.Fatalln(err)
 	}
 
