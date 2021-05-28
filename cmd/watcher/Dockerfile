@@ -1,3 +1,5 @@
 FROM alpine:3
-COPY main /main
-CMD ["/main"]
+RUN apk update
+RUN apk add curl
+COPY watcher /watcher
+CMD ["/watcher"]
